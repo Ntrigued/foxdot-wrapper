@@ -1,4 +1,7 @@
-x ="""
+from FoxDot.lib.Patterns.Sequences import __pattern__
+from .keyboard_handler import KeyboardHandler
+
+
 def c(*args):
     pL = []
     is_group = isinstance(args[0], type(P(1))) or isinstance(args[0], tuple)
@@ -9,6 +12,14 @@ def c(*args):
         return P(pL)
     return P[pL]
 
+
+kh = KeyboardHandler()
+check_and_set = kh.check_and_set
+cas = check_and_set
+get = kh.get
+set = kh.set
+unset = kh.unset
+P = __pattern__()
 o=12;f=-1;s=1;l=list;
 A=-3;B=-1;C=0;D=2;E=4;F=5;G=7;
 C4=C;D4=D;E4=E;F4=F;G4=G;A4=A;B4=B;
@@ -750,8 +761,3 @@ pB8M7 = P[B8+o, D8+o+s, F8+o+s, A8+o+s];
 pB8m = P[B8+o, D8+o, F8+o+s];
 pB8m7 = P[B8+o, D8+o, F8+o+s, A8+o];
 pB8mM7 = P[B8+o, D8+o, F8+o+s, A8+o+s];
-"""
-
-
-def setup_consts(fd_exec):
-    fd_exec(x)

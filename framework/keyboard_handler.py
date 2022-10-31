@@ -1,12 +1,12 @@
 from typing import Any, Dict, List, Optional, Union
 
+from FoxDot.lib.Code import execute
 from pynput import keyboard
 
 
 class KeyboardHandler:
-    def __init__(self, fd_exec):
+    def __init__(self):
         self.keys: Dict[Any, keyboard.Listener] = {}
-        self.fd_exec = fd_exec
 
     def get(self, key: Any) -> Optional[keyboard.Listener]:
         if key in self.keys:
@@ -28,7 +28,7 @@ class KeyboardHandler:
             except:
                 k = keypress.name  # other keys
             if k == key:
-                self.fd_exec(f'{player}.stop() if {player}.isplaying else {player} >> {assignment} ')
+                execute(f'{player}.stop() if {player}.isplaying else {player} >> {assignment} ')
         self.unset(key)
         self.keys[key] = keyboard.Listener(on_press=on_press)
         self.keys[key].start()
